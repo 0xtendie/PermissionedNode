@@ -1,0 +1,18 @@
+version: "3"
+services:
+  node:
+    labels:
+      - com.centurylinklabs.watchtower.enable=true
+    image: ghcr.io/0xtendie/permissionednode:main
+    ports:
+      - "443:443"
+    env_file:
+      - .env
+    volumes:
+      - /etc/letsencrypt:/etc/letsencrypt
+  watchtower:
+    image: containrrr/watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /root/.docker/config.json:/config.json
+    command: --interval 3600 --label-enable
