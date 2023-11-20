@@ -16,3 +16,4 @@ jobs:
           owner: 0xtendie
           base: main
           head: main
+          token: ${{ secrets.PAT }}
