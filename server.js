@@ -157,6 +157,7 @@ class App {
                 res.status(503).json({ reason: "Low on gas" });
                 return;
             }
+            if(process.env.DEBUG)
             console.log("Request from " + req.ip, req.headers)
             if (req.query.timestamp) {
                 res.status(200).json({ message: "OK", timestamp: req.query.timestamp });
